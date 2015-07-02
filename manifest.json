@@ -1,0 +1,20 @@
+{
+  "name": "hightlight",
+  "description": "code hightlight for Chorme",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  }, 
+  "options_page": "options.html",
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*", "ftp://*/*", "file:///*"],
+    "js": ["content.js"],
+    "run_at" : "document_end",
+    "all_frames" : true
+  }],
+  "icons": {"16": "hightlight-16.png", "48": "hightlight-48.png", "128": "hightlight-128.png"},
+  "permissions" : ["clipboardWrite", "http://*/", "contextMenus", "https://*/", "ftp://*/"]
+}
