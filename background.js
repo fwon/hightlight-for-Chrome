@@ -17,9 +17,13 @@
 
 }(function() {
   var hljs = function() {};
-  var KEYWORD_RE = /\b(break|case|catch|continue|default|delete|do|else|finally|for|function|if|in|instanceof|new|return|switch|this|throw|try|typeof|var|void|while|with|define)\b/g;
+  var hjProto = hljs.prototype;
+  var KEYWORD_RE = /\b(import|break|case|catch|continue|default|delete|do|else|finally|for|if|in|instanceof|new|return|switch|this|throw|try|typeof|var|void|while|with|define)\b(?!\")/g;
+  var FUNCTION_RE = /\b(class|export|function)\b/g;
   var COMMENT_MULTI_RE = /(\/\*[\S\s]*?\*\/)/g;
   var COMMENT_RE = /[^:"](\/\/.*)/g;
+  var DOUBLE_QUO_MARK = /(\"[^"]*\")/g;
+  var SINGLE_QUO_MARK = /(\'[^']*\')/g;
 
   var toString = Object.prototype.toString;
   var hasOwn = Object.prototype.hasOwnProperty;
@@ -54,11 +58,14 @@
     }
   }
 
-  hljs.highlightBlock = function (block) {
+  hjProto.highlightBlock = function (block) {
     var resultHTML = block.innerHTML;
     block.classList.add('hljs');
     block.innerHTML = '';
-    resultHTML = resultHTML.replace(KEYWORD_RE, '<span class="hljs-keyword">$1</span>')
+    resultHTML = resultHTML.replace(DOUBLE_QUO_MARK, '<span class="hljs-string">$1</span>')
+      .replace(SINGLE_QUO_MARK, '<span class="hljs-string">$1</span>')
+      .replace(FUNCTION_RE, '<span class="hljs-function">$1</span>')
+      .replace(KEYWORD_RE, '<span class="hljs-keyword">$1</span>')
       .replace(COMMENT_RE, '<span class="hljs-comment">$1</span>')
       .replace(COMMENT_MULTI_RE, '<span class="hljs-comment">$1</span>');
 
@@ -67,19 +74,15 @@
     replaceSubDOMColor(block);
   };
 
+
   //替换评论子元素的颜色
   function replaceSubDOMColor(block) {
     var comments = block.getElementsByClassName('hljs-comment');
 
     _each(comments, function (item) {
-      // var subs = item.children;
-      // console.log(subs);
-      // _each(subs, function (s) {
-      //   s.classList = '';
-      // });
       item.innerHTML = item.innerText;
     });
   }
 
-  return hljs;
+  return new hljs();
 }));
