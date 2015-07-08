@@ -5,6 +5,13 @@
  * @author Lea Verou
  */
 
+body {
+  margin: 0;
+}
+pre {
+  margin: 0 !important;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: black;
