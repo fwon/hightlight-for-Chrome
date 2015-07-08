@@ -7,8 +7,8 @@ Now it supports JS & CSS view, it will spupport others later.
 
 Before:
 
-![roadmap.path](https://raw.githubusercontent.com/fwon/blog/master/assets/hl-01.jpg)
+![roadmap.path](https://raw.githubusercontent.com/fwon/blog/master/assets/hl-01.png)
 
 After:
 
-![roadmap.path](https://raw.githubusercontent.com/fwon/blog/master/assets/hl-02.jpg)
+![roadmap.path](https://raw.githubusercontent.com/fwon/blog/master/assets/hl-02.png)
