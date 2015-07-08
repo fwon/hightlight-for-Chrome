@@ -584,6 +584,7 @@ Prism.languages.insertBefore('javascript', 'class-name', {
 });
 
 if (Prism.languages.markup) {
+  alert('haha');
   Prism.languages.insertBefore('markup', 'tag', {
     'script': {
       pattern: /<script[\w\W]*?>[\w\W]*?<\/script>/i,
@@ -599,3 +600,5 @@ if (Prism.languages.markup) {
   });
 }
 ;
+
+Prism && Prism.highlightAll && Prism.highlightAll();

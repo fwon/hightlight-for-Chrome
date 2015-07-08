@@ -3,11 +3,17 @@
   "description": "code hightlight for Chorme",
   "version": "0.1",
   "manifest_version": 2,
-  "app": {
-    "background": {
-      "scripts": ["background.js"]
-    }
-  }, 
-  "icons": {"16": "hightlight-16.png", "48": "hightlight-48.png", "128": "hightlight-128.png"},
-  "permissions" : ["clipboardWrite", "http://*/", "contextMenus", "https://*/", "ftp://*/"]
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "options_page": "options.html",
+  "browser_action": {
+    "default_title": "hightlight",
+    "default_icon": "hightlight-48.png"
+  },
+  "permissions" : [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ]
 }
